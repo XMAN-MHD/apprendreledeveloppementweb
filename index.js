@@ -12,3 +12,7 @@ const app = new express();
 */
 let port = process.env.PORT || 4000;
 app.listen(port, () => {console.log('Express server listening on port 4000')});
+/*
+    provide the static files
+*/
+app.use(express.static('public')); 
