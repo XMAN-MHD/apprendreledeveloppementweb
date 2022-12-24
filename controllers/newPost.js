@@ -1,7 +1,7 @@
 /*
     controller
 */ 
-const publier = (req, res) => {
+const newPost = (req, res) => {
     res.render(
         'publier', 
         {editor: true}
@@ -10,4 +10,4 @@ const publier = (req, res) => {
 /*
     give access to index controller
 */ 
-module.exports = publier;
+module.exports = newPost;

@@ -37,7 +37,7 @@
                             <!-- To make this form functional, sign up at-->
                             <!-- https://startbootstrap.com/solution/contact-forms-->
                             <!-- to get an API token!-->
-                            <form id="contactForm" method="POST">
+                            <form id="contactForm" method="POST" action="/users/new" enctype="multipart/form-data">
                                 <div class="form-floating">
                                     <input name="name" class="form-control" id="name" type="text" placeholder="saisir votre prenom et nom..." />
                                     <label for="name">Prénom et Nom</label>
@@ -49,6 +49,10 @@
                                 <div class="form-floating">
                                     <input name="email" class="form-control" id="email" type="email" placeholder="saisir votre email..." />
                                     <label for="email">Email</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input name="password" class="form-control" id="password" type="password" placeholder="saisir votre mot de passe..." />
+                                    <label for="password">Mot de passe</label>
                                 </div>
                                 <div class="form-floating">
                                     <input name="phone" class="form-control" id="phone" type="tel" placeholder="saisir votre téléphone..." />
@@ -67,8 +71,8 @@
                                 </div>
                                 <br>
                                 <div class="form-floating">
-                                    <input name="post-image" class="form-control" id="post-image" type="file"/>
-                                    <label for="post-image">Image Profile</label>
+                                    <input name="image" class="form-control" id="profileImage" type="file"/>
+                                    <label for="profileImage">Image Profile</label>
                                 </div>
                                 <br />
                                 <!-- Submit success message-->
@@ -84,7 +88,7 @@
                                     </div>
                                 </div>
                                 <!-- Submit Button-->
-                                <button class="btn btn-primary text-uppercase disabled" id="submitButton" type="submit">S'inscrire</button>
+                                <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">S'inscrire</button>
                             </form>
                         </div>
                     </div>

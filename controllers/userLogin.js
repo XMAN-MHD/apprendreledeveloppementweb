@@ -1,10 +1,10 @@
 /*
     controller
 */ 
-const seConnecter = (req, res) => {
+const userLogin = (req, res) => {
     res.render('seConnecter');
 }
 /*
     give access to index controller
 */ 
-module.exports = seConnecter;
+module.exports = userLogin;

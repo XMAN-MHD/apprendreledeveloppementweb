@@ -1,7 +1,7 @@
 /*
     controller
 */ 
-const inscrire = (req, res) => {
+const newUser = (req, res) => {
     res.render(
         'inscrire', 
         {editor: true}
@@ -10,4 +10,4 @@ const inscrire = (req, res) => {
 /*
     give access to index controller
 */ 
-module.exports = inscrire;
+module.exports = newUser;

@@ -1,7 +1,7 @@
 /*
     controller
 */ 
-const monCompte = (req, res) => {
+const user = (req, res) => {
     res.render(
         'monCompte', 
     );
@@ -9,4 +9,4 @@ const monCompte = (req, res) => {
 /*
     give access to index controller
 */ 
-module.exports = monCompte;
+module.exports = user;
