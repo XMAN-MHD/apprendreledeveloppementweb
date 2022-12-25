@@ -18,10 +18,13 @@ const storeUser = (req, res) => {
             await UserModel.create(
                 {...req.body, profileImage: '/assets/img' + imageHandler.name},
                 (e, user) => {
-                    if (e) {
-                        console.error(e);
-                    }else{
-                        return res.redirect('/users/user:id')
+                    if(e) 
+                    {
+                        return res.redirect('/auth/register')
+                    }
+                    else
+                    {
+                        return res.redirect('/auth/login')
                     } 
                 } 
             )
@@ -29,6 +32,6 @@ const storeUser = (req, res) => {
     );       
 }
 /*
-    give access to index controller
+    give access to store user controller
 */ 
 module.exports = storeUser;

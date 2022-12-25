@@ -14,7 +14,7 @@
                             <h1>Connexion</h1>
                             <span class="subheading">Connecter vous à votre compte et publier des articles.</span>
                         </div>
-                    </div>
+                    </div> 
                 </div>
             </div>
         </header>
@@ -38,7 +38,7 @@
                             <!-- To make this form functional, sign up at-->
                             <!-- https://startbootstrap.com/solution/contact-forms-->
                             <!-- to get an API token!-->
-                            <form id="contactForm" method="POST">
+                            <form id="contactForm" method="POST" action="/users/login">
                                 <div class="form-floating">
                                     <input name="email" class="form-control" id="email" type="email" placeholder="saisir votre email..." />
                                     <label for="email">Email</label>
@@ -61,7 +61,14 @@
                                     </div>
                                 </div>
                                 <!-- Submit Button-->
-                                <button class="btn btn-primary text-uppercase disabled" id="submitButton" type="submit">Se Connecter</button>
+                                <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Connexion</button> 
+                                <br><br>
+                                <span>
+                                    Avez-vous un compte ? créer un compte en cliquant 
+                                    <a href="/auth/register" style="color:red; text-decoration: underline;">
+                                        ici
+                                    </a>
+                                </span>
                             </form>
                         </div>
                     </div>

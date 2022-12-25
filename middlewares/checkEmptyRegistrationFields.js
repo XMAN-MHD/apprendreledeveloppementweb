@@ -1,7 +1,7 @@
 /*
     middleware
 */ 
-const checkEmptyField = (req, res, next) => {
+const checkEmptyRegistrationFields = (req, res, next) => {
   if (req.files == null || req.body.name == null || req.body.username == null || req.body.password == null || req.body.email == null || req.body.phone == null || req.body.message == null )
   {
     return res.redirect('/auth/register');
@@ -11,4 +11,4 @@ const checkEmptyField = (req, res, next) => {
 /*
     give access to checkEmptyField middleware
 */ 
-module.exports = checkEmptyField;
+module.exports = checkEmptyRegistrationFields;
