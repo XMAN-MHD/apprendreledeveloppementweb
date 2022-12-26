@@ -1,9 +1,16 @@
 /*
+    module references
+*/
+    // user model
+const userModel = require('../models/User');    
+/*
     controller
 */ 
-const user = (req, res) => {
+const user = async (req, res) => {
+    const userDatas = await userModel.findById(req.session.userId);
     res.render(
-        'monCompte', 
+        'account', 
+        {user: userDatas}
     );
 }
 /*

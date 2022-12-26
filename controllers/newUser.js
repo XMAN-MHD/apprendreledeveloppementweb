@@ -3,7 +3,7 @@
 */ 
 const newUser = (req, res) => {
     res.render(
-        'inscrire', 
+        'inscription', 
         {editor: true}
     );
 }

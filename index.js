@@ -18,16 +18,17 @@ const contactezMoiController = require('./controllers/contactezMoi');
 const authLoginController = require('./controllers/authLogin');
 const newUserController = require('./controllers/newUser');
 const newPostController = require('./controllers/newPost');
-const mesCoursController = require('./controllers/mesCours');
+const coursesController = require('./controllers/courses');
 const userController = require('./controllers/user');
 const storeUserController = require('./controllers/storeUser');
 const userLoginController = require('./controllers/userLogin');
 const logoutUserController = require('./controllers/logoutUser');
+const storePostController = require('./controllers/storePost');
     //custom middlewares 
 const checkEmptyRegistrationFieldsMiddleware = require('./middlewares/checkEmptyRegistrationFields'); 
 const checkEmptyLoginFieldsMiddleware = require('./middlewares/checkEmptyLoginFields'); 
 const keepUsersOutMiddleware = require('./middlewares/keepUsersOut'); 
-keepVisitorsOutMiddleware = require('./middlewares/keepVisitorsOut');
+const keepVisitorsOutMiddleware = require('./middlewares/keepVisitorsOut');
 /*
     server
 */
@@ -96,7 +97,7 @@ app.get('/users/2md', contactezMoiController);
 app.get('/auth/login', authLoginController);
 app.get('/auth/register', newUserController);
 app.get('/posts/new', newPostController);
-app.get('/users/2md/courses', mesCoursController);
+app.get('/users/2md/courses', coursesController);
 app.get('/users/user:id', userController);
 app.get('/users/logout', logoutUserController);
 /*
@@ -104,5 +105,6 @@ app.get('/users/logout', logoutUserController);
 */
 app.post('/users/new', storeUserController); 
 app.post('/users/login', userLoginController); 
+app.post('/posts/store', storePostController);
 
 

@@ -1,12 +1,12 @@
 /*
     controller
 */ 
-const mesCours = (req, res) => {
+const courses = (req, res) => {
     res.render(
-        'mesCours', 
+        'courses', 
     );
 }
 /*
     give access to index controller
 */ 
-module.exports = mesCours;
+module.exports = courses;

@@ -13,10 +13,14 @@ const storeUser = (req, res) => {
     let imageHandler = req.files.image;
     // validation
     imageHandler.mv(
-        path.resolve(__dirname, '../public/assets/img', imageHandler.name), 
+        path.resolve(__dirname, '../public/assets/img/', imageHandler.name), 
         async (e) => {
+            if (e) {
+                console.error(e)
+                return res.redirect('/auth/regester')
+            }
             await UserModel.create(
-                {...req.body, profileImage: '/assets/img' + imageHandler.name},
+                {...req.body, profileImage: '/assets/img/' + imageHandler.name},
                 (e, user) => {
                     if(e) 
                     {

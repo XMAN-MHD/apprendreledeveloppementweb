@@ -3,7 +3,7 @@
 */ 
 const newPost = (req, res) => {
     res.render(
-        'publier', 
+        'publication', 
         {editor: true}
     );
 }

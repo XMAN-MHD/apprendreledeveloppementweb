@@ -2,7 +2,7 @@
     controller
 */ 
 const authLogin = (req, res) => {
-    res.render('seConnecter');
+    res.render('connexion');
 }
 /*
     give access to authentification login controller

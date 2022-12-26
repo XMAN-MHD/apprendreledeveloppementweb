@@ -38,7 +38,7 @@
                             <!-- To make this form functional, sign up at-->
                             <!-- https://startbootstrap.com/solution/contact-forms-->
                             <!-- to get an API token!-->
-                            <form id="contactForm" method="POST">
+                            <form id="contactForm" method="POST" action="/posts/store" enctype="multipart/form-data">
                                 <div class="form-floating">
                                     <input name="title" class="form-control" id="title" type="text" placeholder="saisir votre titre..." />
                                     <label for="title">Titre</label>
@@ -56,7 +56,7 @@
                                 </div>
                                 <br />
                                 <div class="form-floating">
-                                    <input name="postImage" class="form-control" id="postImage" type="file"/>
+                                    <input name="image" class="form-control" id="postImage" type="file"/>
                                     <label for="postImage">Image de l'article</label>
                                 </div>
                                 <br />
@@ -73,7 +73,7 @@
                                     </div>
                                 </div>
                                 <!-- Submit Button-->
-                                <button class="btn btn-primary text-uppercase disabled" id="submitButton" type="submit">Publier</button>
+                                <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Publier</button>
                             </form>
                         </div>
                     </div>

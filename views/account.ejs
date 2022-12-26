@@ -6,13 +6,13 @@
         <!-- Navigation-->
         <%- include('./layout/navBar.ejs') %>
         <!-- Page Header-->
-        <header class="masthead" style="background-image: url('/assets/img/account-bg.jpg')">
+        <header class="masthead" style="background-image: url('<%= user.profileImage %>')">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="site-heading">
                             <h1>BIENVENUE</h1>
-                            <span class="subheading">Kadiatou Telly Diallo</span>
+                            <span class="subheading"><%= user.username %></span>
                         </div>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
                             <h2 class="post-title">Prénom et Nom</h2>
                         </a>
                         <p class="post-meta">
-                            Kadiatou Telly Diallo
+                            <%= user.name %>
                         </p>
                     </div>
                     <!-- Divider-->
@@ -37,7 +37,7 @@
                     <div class="post-preview">
                         <a href="#"><h2 class="post-title">Email</h2></a>
                         <p class="post-meta">
-                            kadiatoutellydiallo@uvs.edu.sn
+                            <%= user.email %>
                         </p>
                     </div>
                     <!-- Divider-->
@@ -48,7 +48,7 @@
                             <h2 class="post-title">Téléphone</h2>
                         </a>
                         <p class="post-meta">
-                            +221 77 458 12 35
+                            <%= user.phone %>
                         </p>
                     </div>
                     <!-- Divider-->
@@ -58,11 +58,20 @@
                         <a href="#">
                             <h2 class="post-title">Description</h2>
                         </a>
-                        <p class="post-meta">
-                            Kadiatou Telly Diallo est une étudiante dévouée et travailleuse qui s'efforce constamment de réussir dans ses études. 
-                            Elle est très motivée, proactive et s'efforce toujours de dépasser ses objectifs. En classe, Kadiatou est attentive et impliquée, et elle produit constamment un travail de qualité supérieure. 
-                            Elle est un atout précieux pour tout environnement éducatif et est sûre de réussir dans tous ses projets.
-                        </p>
+                        <p class="post-meta"><%- user.message %></p>
+                    </div> 
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                    <!-- Posts -->
+                    <div class="post-preview">
+                        <a href="#">
+                            <h2 class="post-title">Publications</h2>
+                        </a>
+                        <div class="post-meta">
+                            <ul>
+                                <li><a href="#">Qu'est ce que le développement web</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
