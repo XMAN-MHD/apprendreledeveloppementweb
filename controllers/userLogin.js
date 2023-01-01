@@ -22,7 +22,7 @@ const toLoginUser = (req, res) => {
                         if(samePassword)
                         {
                             req.session.userId = user._id;
-                            return res.redirect('/users/user:id');
+                            return res.redirect('/users/account');
                         }
                         else
                         {

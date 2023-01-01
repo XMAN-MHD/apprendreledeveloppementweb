@@ -3,7 +3,7 @@
 */
     // package references
     const path = require('path');
-    // user model
+    // post model
 const PostModel = require('../models/Post');
 /*
     controller
@@ -16,18 +16,21 @@ const storePost = (req, res) => {
          path.resolve(__dirname, '../public/assets/img/', imageHandler.name), 
          async (e) => {
              if (e) {
-                 return res.redirect('/posts/new')
+                console.error(e);
+                return res.redirect('/posts/new')
              }
              await PostModel.create(
-                 {...req.body, postImage: '/assets/img/' + imageHandler.name},
+                 {...req.body, postImage: '/assets/img/' + imageHandler.name, userId: req.session.userId},
                  (e, user) => {
                      if(e) 
                      {
-                         return res.redirect('/posts/new')
+                        console.error(e);
+                        return res.redirect('/posts/new')
                      }
                      else
                      {
-                         return res.redirect('/')
+                        console.error(e);
+                        return res.redirect('/')
                      } 
                  } 
              )

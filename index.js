@@ -1,7 +1,8 @@
 /*
     define global variables
 */
-global.LoggedIn = false;     
+global.LoggedIn = false;  
+global.Username = '';  
 /*
     references to modules
 */ 
@@ -12,18 +13,23 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const expressFileUpload = require('express-fileupload');
 const expressSession = require('express-session');
+    // user model
+const UserModel = require('./models/User');
     //controllers 
 const homeController = require('./controllers/home');
 const contactezMoiController = require('./controllers/contactezMoi');
 const authLoginController = require('./controllers/authLogin');
 const newUserController = require('./controllers/newUser');
 const newPostController = require('./controllers/newPost');
+const newCourseController = require('./controllers/newCourse');
 const coursesController = require('./controllers/courses');
 const userController = require('./controllers/user');
 const storeUserController = require('./controllers/storeUser');
 const userLoginController = require('./controllers/userLogin');
 const logoutUserController = require('./controllers/logoutUser');
 const storePostController = require('./controllers/storePost');
+const storeCourseController = require('./controllers/storeCourse');
+const getPostController = require('./controllers/getPost');
     //custom middlewares 
 const checkEmptyRegistrationFieldsMiddleware = require('./middlewares/checkEmptyRegistrationFields'); 
 const checkEmptyLoginFieldsMiddleware = require('./middlewares/checkEmptyLoginFields'); 
@@ -80,12 +86,24 @@ app.use('/auth/register', keepUsersOutMiddleware);
     // custum middleware to prevent visitors to connect, to publish and to log out 
 app.use('/posts/new', keepVisitorsOutMiddleware);
 app.use('/users/logout', keepVisitorsOutMiddleware);
-app.use('/users/user:id', keepVisitorsOutMiddleware);
+app.use('/users/account', keepVisitorsOutMiddleware);
     // custom middleware allow the front-end to know whether the user has a session or not 
 app.use(
     '*',
     (req, res, next) => {
         loggedIn = req.session.userId;
+        if(loggedIn)
+        {
+            UserModel.findById(
+                req.session.userId,
+                (e, user) => {
+                    if(!e)
+                    {
+                        Username = user.username;
+                    }
+                } 
+            );
+        }
         next();
     }
 ) 
@@ -93,18 +111,21 @@ app.use(
     handle get request
 */ 
 app.get('/', homeController);
-app.get('/users/2md', contactezMoiController);
+app.get('/contacte', contactezMoiController);
 app.get('/auth/login', authLoginController);
 app.get('/auth/register', newUserController);
+app.get('/courses/new', newCourseController);
 app.get('/posts/new', newPostController);
-app.get('/users/2md/courses', coursesController);
-app.get('/users/user:id', userController);
+app.get('/courses', coursesController);
+app.get('/users/account', userController);
 app.get('/users/logout', logoutUserController);
+app.get('/posts/:id', getPostController);
 /*
     handle post request
 */
 app.post('/users/new', storeUserController); 
 app.post('/users/login', userLoginController); 
 app.post('/posts/store', storePostController);
+app.post('/courses/store', storeCourseController);
 
 

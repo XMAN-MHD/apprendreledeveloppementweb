@@ -1,9 +1,18 @@
 /*
+   module references 
+*/
+    // user model
+const CoursesPostModel = require('../models/CoursesPost');
+/*
     controller
 */ 
-const courses = (req, res) => {
+const courses = async(req, res) => {
+    const coursesPosts = await CoursesPostModel.find({}).populate('userId');
     res.render(
         'courses', 
+        {
+            coursesPosts: coursesPosts
+        }
     );
 }
 /*

@@ -11,7 +11,7 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="site-heading">
-                            <h1>BIENVENUE</h1>
+                            <h1>Profile</h1>
                             <span class="subheading"><%= user.username %></span>
                         </div>
                     </div>
@@ -68,9 +68,18 @@
                             <h2 class="post-title">Publications</h2>
                         </a>
                         <div class="post-meta">
-                            <ul>
-                                <li><a href="#">Qu'est ce que le développement web</a></li>
+                            <ul id="items">
+                                <% if( (posts !== null) && (posts.length > 0) ) { %>
+                                    <% for(var i = posts.length - 1; i >= 0; i--) { %>
+                                        <li><a href="/posts/<%= posts[i]._id %>"><%= posts[i].title %></a></li>
+                                    <% } %>
+                                <% } %>
                             </ul>
+                            <div id="pagination">
+                                <div id="prevButton"></div>
+                                <div id="pageButtons"></div>
+                                <div id="nextButton"></div>
+                            </div> 
                         </div>
                     </div>
                 </div>
@@ -81,5 +90,7 @@
         <!-- Bootstrap core JS-->
         <!-- Core theme JS-->
         <%- include('./layout/script.ejs') %>
+        <!-- Pagination JS-->
+        <%- include('./layout/paginationScript.ejs') %>
     </body>
 </html>

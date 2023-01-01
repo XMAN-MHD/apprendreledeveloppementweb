@@ -7,7 +7,7 @@ const PostModel = require('../models/Post');
     controller
 */ 
 const home = async (req, res) => {
-    const posts = await PostModel.find({},);
+    const posts = await PostModel.find({}).populate('userId');
     res.render(
         'home', 
         {

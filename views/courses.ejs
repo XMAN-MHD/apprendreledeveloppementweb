@@ -22,51 +22,41 @@
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
-                    <p>
-                        Si vous voulez devenir un maître en développement web, ne cherchez pas plus loin que 2MD. 
-                        Avec des années d'expérience et un historique de succès éprouvé, 2MD est le coach idéal pour vous aider à atteindre vos objectifs. 
-                        Ne manquez pas cette opportunité d'apprendre auprès des meilleurs - inscrivez-vous aux cours de 2MD dès aujourd'hui et prenez les premiers pas vers une carrière gratifiante en développement web.
-                    </p>
-                    <!-- Post preview-->
-                    <div class="post-preview">
-                        <a href="post.html">
-                            <h2 class="post-title">Comment s'inscrire aux cours payant donnés par 2MD ?</h2>
-                        </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Start Bootstrap</a>
-                            on September 24, 2022
-                        </p>
-                    </div>
-                    <!-- Divider-->
-                    <hr class="my-4" />
-                    <!-- Post preview-->
-                    <div class="post-preview">
-                        <a href="post.html"><h2 class="post-title">Comment faire un cours avec 2MD ?</h2></a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Start Bootstrap</a>
-                            on September 18, 2022
-                        </p>
-                    </div>
-                    <!-- Divider-->
-                    <hr class="my-4" />
-                    <!-- Post preview-->
-                    <div class="post-preview">
-                        <a href="post.html"><h2 class="post-title">Les projets créés par 2MD</h2></a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#!">Start Bootstrap</a>
-                            on September 18, 2022
-                        </p>
-                    </div>
+                    <% if( (coursesPosts !== null) && (coursesPosts.length > 0) ) { %>
+                        <ul id="items">
+                            <% for(var i = coursesPosts.length - 1; i >= 0; i--) { %>
+                                <li>
+                                    <!-- Post preview-->
+                                    <div class="post-preview">
+                                        <a href="courses/<%= coursesPosts[i]._id %>">
+                                            <h2 class="post-title"><%= coursesPosts[i].title %></h2>
+                                        </a>
+                                        <p class="post-meta">
+                                            Posted by
+                                            <a href="/users/account"><%= coursesPosts[i].userId.username %></a>
+                                            <%= coursesPosts[i].postDate.toDateString() %>
+                                        </p>
+                                    </div>
+                                    <!-- Divider-->
+                                    <hr class="my-4" />
+                                </li>
+                            <% } %>
+                        </ul>
+                    <% } %>
                 </div>
+                <div id="pagination">
+                    <div id="prevButton"></div>
+                    <div id="pageButtons"></div>
+                    <div id="nextButton"></div>
+                </div> 
             </div>
         </div>
         <!-- Footer-->
         <%- include('./layout/footer.ejs') %>
         <!-- Bootstrap core JS-->
         <!-- Core theme JS-->
-        <%- include('./layout/script.ejs') %>
+        <%- include('./layout/script.ejs') %> 
+        <!-- Pagination JS-->
+        <%- include('./layout/paginationScript.ejs') %>
     </body>
 </html>

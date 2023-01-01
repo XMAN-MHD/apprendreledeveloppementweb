@@ -2,15 +2,20 @@
     module references
 */
     // user model
-const userModel = require('../models/User');    
+const PostModel = require('../models/Post');    
 /*
     controller
 */ 
 const user = async (req, res) => {
-    const userDatas = await userModel.findById(req.session.userId);
+    const posts = await PostModel.find({}).populate('userId');
+    const user = posts[0].userId;
+    console.log(user);
     res.render(
         'account', 
-        {user: userDatas}
+        {
+            posts: posts, 
+            user: user
+        }
     );
 }
 /*
